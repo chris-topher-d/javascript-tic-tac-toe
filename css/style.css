@@ -1,0 +1,122 @@
+/* General */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: -webkit-radial-gradient(center, circle, #147f6d, #073448) 100% no-repeat;
+  background: -o-radial-gradient(center, circle, #147f6d, #073448) 100% no-repeat;
+  background: radial-gradient(circle at center, #147f6d, #073448) 100% no-repeat;
+/*   background: radial-gradient(#9e5642, #21112e) 100% no-repeat; */
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; /* Webkit */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE 10  */
+  -o-user-select: none;      /* Opera */
+  user-select: none;
+}
+
+.container {
+  width: 330px;
+  color: #89fba5;
+  margin: auto;
+  /* margin-top: 3em; */
+  text-align: center;
+}
+
+/* Player Selection */
+
+.player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 330px;
+  height: 100px;
+}
+
+#X, #O {
+  width: 165px;
+}
+
+.selector {
+  font-size: 80px;
+  cursor: default;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+}
+
+.symbol:hover {
+  text-shadow: 5px 5px 10px #000000 !important;
+  cursor: pointer;
+}
+
+/* Board */
+
+.board {
+  width: 342px;
+  height: 342px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  float: left;
+  background-color: #1fbe8c;
+  color: #89fba5;
+  margin: 5px;
+  border: 2px solid #89fba5;
+  border-radius: 5px;
+  font-size: 80px;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+}
+
+.square:hover {
+  background-color: #89fba5 !important;
+  color: #1fbe8c !important;
+  cursor: pointer;
+}
+
+/* New Game Button */
+
+.btn {
+  background-color: #1fbe8c;
+  color: #89fba5;
+  font-size: 15px;
+  padding: 5px 5px 4px 5px;
+  border: solid 2px #89fba5;
+  border-radius: 3px;
+  margin-top: 30px;
+}
+
+.btn:hover {
+  background-color: #89fba5;
+  color: #1fbe8c;
+  border: solid 2px #89fba5;
+}
