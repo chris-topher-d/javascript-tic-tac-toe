@@ -31,7 +31,7 @@ let human = '', // human opponent's chosen symbol
     comp = ''; // computer's symbol
 
 let moveCount = 0, // counts the numer of moves made by opponent
-    turn = 0; // determine's whose turn it is
+    turn = 0; // determine's whose turn it is; 0 === human, 1 === computer
 
 // player selection
 $('.selector').click(function() {
@@ -108,8 +108,10 @@ function winOrNot() {
   }
 }
 
+// Checks for positions that are one move away from a win
 function checkForThree() {
   let keys = Object.keys(connectThree);
+  let values = Object.values(connectThree);
 
   for (let i = 0; i < 9; i++) {
     if (board[i] === '') {
@@ -119,27 +121,28 @@ function checkForThree() {
     }
   }
 
-  for (let i = 0; i < keys.length; i++) {
-    if (turn === 1 && connectThree[keys[i]] < -1) {
-      fillGap(keys[i]);
-      break;
-    } else if (turn === 1 && connectThree[keys[i]] > 1) {
-      fillGap(keys[i]);
-      break;
-    } else if (moveCount === 2 && turn === 1 && (board[0] === human && board[8] === human || board[2] === human && board[6] === human)) {
-      if (board[3] === '') {
-        $('#3').html(comp);
-        turn = 0;
-        scan(3, comp);
-      } else {
-        $('#5').html(comp);
-        turn = 0;
-        scan(5, comp);
-      }
-    } else if (turn === 1 && i === 7) {
-      noThreat();
+  if (turn === 1 && values.includes(-2)) {
+    fillGap(keys[values.indexOf(-2)]);
+  } else if (turn === 1 && values.includes(2)) {
+    fillGap(keys[values.indexOf(2)]);
+  } else if (moveCount === 2 && turn === 1 && (board[0] === human && board[8] === human || board[2] === human && board[6] === human || board[5] === human && board[7] === human)) {
+    if (board[5] === human && board[7] === human && board[8] === '') {
+      $('#8').html(comp);
+      turn = 0;
+      scan(8, comp);
+    } else if (board[3] === '') {
+      $('#3').html(comp);
+      turn = 0;
+      scan(3, comp);
+    } else {
+      $('#5').html(comp);
+      turn = 0;
+      scan(5, comp);
     }
+  } else if (turn === 1) {
+    noThreat();
   }
+
 }
 
 // generates move if no combinations are in threat
